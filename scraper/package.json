@@ -1,0 +1,16 @@
+{
+  "name": "satya-portfolio-linkedin-scraper",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local tool: scrape your own LinkedIn activity, structure it with Gemini, write posts.generated.json for the portfolio Blog section.",
+  "scripts": {
+    "login": "node scrape-linkedin.mjs --login",
+    "scrape": "node scrape-linkedin.mjs"
+  },
+  "dependencies": {
+    "@google/genai": "^0.3.0",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.49.0"
+  }
+}
