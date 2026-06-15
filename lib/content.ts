@@ -160,7 +160,7 @@ export const projects: Project[] = [
     name: "Tax Litigation Management",
     client: "Deloitte",
     role: "Angular Developer",
-    period: "Jun 2022 — Present",
+    period: "Jun 2022 — Jan 2026",
     summary:
       "Deloitte's Direct & Indirect Tax litigation tool — a role-based platform where stakeholders run reports and perform tax-management activities by permission.",
     tech: ["Angular 12", "PrimeNG", ".NET (C#)", "PostgreSQL", "Power BI", "MSAL"],
@@ -202,7 +202,7 @@ export const projects: Project[] = [
   {
     name: "Nutri AI — Diet Recommendations",
     role: "AI / Full-Stack",
-    period: "Jan 2025 — Present",
+    period: "Jan 2025 — Sep 2025",
     summary:
       "Doctor-patient platform where patients upload health reports and receive LLM-generated personalized diet plans under a doctor's observation.",
     tech: ["React", "Python", "LangChain", "OpenAI", "MongoDB"],
@@ -222,7 +222,7 @@ export const projects: Project[] = [
   {
     name: "Gen AI",
     role: "Angular Developer",
-    period: "Mar 2024 — Present",
+    period: "Mar 2024 — Aug 2024",
     summary:
       "AI platform for natural-language queries and file uploads — SQL-query conversion and unstructured-data analysis showcasing NLP and DB integration.",
     tech: ["Angular 17", "Python", "MySQL", "NLP"],
