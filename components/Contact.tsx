@@ -4,6 +4,11 @@ import { useState } from "react";
 import { profile } from "@/lib/content";
 import Reveal from "./Reveal";
 
+// Web3Forms access key — get yours free (no signup) at https://web3forms.com/#start
+// by entering the email where submissions should land. Safe to commit: it can only
+// send TO your configured email, never read anything.
+const WEB3FORMS_ACCESS_KEY = "97dfd2a2-168e-49a0-a68d-0686e7d1c3ca";
+
 const links = [
   { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
   { label: "Phone", value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, "")}` },
@@ -11,16 +16,38 @@ const links = [
   { label: "LinkedIn", value: "linkedin.com/in/satyanarayanavvm", href: profile.linkedin },
 ];
 
+type Status = "idle" | "sending" | "success" | "error";
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<Status>("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio enquiry from ${form.name || "someone"}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n— ${form.name}${form.email ? ` (${form.email})` : ""}`
-    );
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Portfolio enquiry from ${form.name || "someone"}`,
+          from_name: form.name,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   const field =
@@ -70,12 +97,32 @@ export default function Contact() {
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               className={`${field} resize-none`}
             />
+            {/* honeypot: real users leave this empty, bots fill it → silently dropped */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
             <button
               type="submit"
-              className="w-full rounded-md bg-gradient-to-r from-accent to-accent-2 px-6 py-3.5 font-mono text-sm font-semibold text-[#04121c] transition-all hover:shadow-[0_0_24px_var(--glow)]"
+              disabled={status === "sending"}
+              className="w-full rounded-md bg-gradient-to-r from-accent to-accent-2 px-6 py-3.5 font-mono text-sm font-semibold text-[#04121c] transition-all hover:shadow-[0_0_24px_var(--glow)] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              send_message()
+              {status === "sending" ? "sending..." : "send_message()"}
             </button>
+            {status === "success" && (
+              <p className="font-mono text-sm text-accent" role="status">
+                ↳ message sent — I&apos;ll get back to you soon. ✓
+              </p>
+            )}
+            {status === "error" && (
+              <p className="font-mono text-sm text-[#ff5f56]" role="status">
+                ↳ something went wrong. Please email me directly at {profile.email}.
+              </p>
+            )}
           </form>
         </Reveal>
 

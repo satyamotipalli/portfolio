@@ -36,9 +36,7 @@ export const nav = [
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Roadmap", href: "#roadmap" },
-  { label: "Blog", href: "#blog" },
   { label: "Stack", href: "#stack" },
-  { label: "Sandbox", href: "#sandbox" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -136,12 +134,12 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "Pathsaathi — School ERP Platform",
+    name: "Pathsaathi — ERP & LMS Platform",
     client: "Ampersand Group",
     period: "May 2026 — Present",
     summary:
       "Multi-vertical education & skilling platform serving admins, teachers, students, parents and industry partners across centres in India — admissions, finance, attendance, transport, LMS and vocational skilling end to end.",
-    tech: ["Next.js", "React", "NestJS", "Strapi", "TypeScript", "MongoDB", "PostgreSQL", "Kafka"],
+    tech: ["Next.js", "React", "NestJS", "Python", "Strapi", "TypeScript", "MongoDB", "PostgreSQL", "Kafka"],
     highlights: [
       "Built admin, teacher and student modules on Next.js 13 / React with reusable hooks.",
       "RBAC via Strapi with dynamic permission resolution and menu rendering.",
@@ -285,13 +283,15 @@ export const projects: Project[] = [
 export const experience = {
   company: "Sparity Soft Technology Pvt. Ltd.",
   role: "Software Developer",
-  period: "2022 — Present",
+  period: "April 2022 — Present",
   blurb:
     "Delivering full-stack web applications for clients across tax, internal tooling, government, energy, education and AI — owning features from requirements through deployment in Agile (Scrum) teams.",
   highlights: [
     "Full-stack delivery across Angular / React / Next.js and Node.js / NestJS.",
     "Built reusable component libraries, pipes, directives, hooks and services.",
-    "Integrated secure auth (MSAL, RBAC) and RESTful services across production apps.",
+    "Integrated secure auth (MSAL, RBAC, Keycloak) and RESTful services across production apps.",
+    "Implemented Keycloak SSO with realm/role mapping and token-based session handling.",
+    "Worked with PostgreSQL & MongoDB, plus exposure to Kafka-based event flows.",
     "Drove AI integration with LangChain and OpenAI — agents and LLM workflows.",
   ],
 };

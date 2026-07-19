@@ -72,7 +72,7 @@ export default function Hero() {
             </a>
             <a
               href="/cv.pdf"
-              download
+              download="Satyanarayana-Motipalli-CV.pdf"
               className="inline-flex items-center gap-2 rounded-lg border border-border-bright bg-background-elevated/60 px-6 py-3.5 font-mono text-sm text-foreground transition-all hover:border-accent hover:text-accent"
             >
               <svg

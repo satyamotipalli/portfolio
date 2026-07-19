@@ -6,8 +6,6 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Roadmap from "@/components/Roadmap";
 import Skills from "@/components/Skills";
-import Blog from "@/components/Blog";
-import Sandbox from "@/components/Sandbox";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -23,8 +21,6 @@ export default function Home() {
         <Experience />
         <Roadmap />
         <Skills />
-        <Blog />
-        <Sandbox />
         <Contact />
       </main>
       <Footer />
