@@ -14,12 +14,11 @@ const v = [
 
 const hexPoints = v.map((p) => `${p.x},${p.y}`).join(" ");
 
-// Spokes that carry a travelling particle, with a stagger delay.
-const travellers = [
-  { to: v[0], delay: 0 }, // top (vertical)
-  { to: v[3], delay: 1.2 }, // bottom (vertical)
-  { to: v[5], delay: 2.4 }, // upper-left
-];
+// Every spoke carries a travelling particle, staggered evenly around one cycle
+// (travel 2.4s + pause 1.4s) so they arrive clockwise, one after another.
+const TRAVEL = 2.4;
+const PAUSE = 1.4;
+const travellers = v.map((to, i) => ({ to, delay: (i * (TRAVEL + PAUSE)) / v.length }));
 
 export default function NetworkGraphic() {
   return (
@@ -61,7 +60,7 @@ export default function NetworkGraphic() {
             fill="var(--accent)"
             initial={{ cx: t.to.x, cy: t.to.y, opacity: 0 }}
             animate={{ cx: [t.to.x, 200], cy: [t.to.y, 200], opacity: [0, 1, 1, 1, 0] }}
-            transition={{ duration: 2.4, delay: t.delay, repeat: Infinity, repeatDelay: 1.4, ease: "easeInOut" }}
+            transition={{ duration: TRAVEL, delay: t.delay, repeat: Infinity, repeatDelay: PAUSE, ease: "easeInOut" }}
           />
         ))}
 

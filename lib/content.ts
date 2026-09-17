@@ -28,6 +28,7 @@ export const profile = {
   phone: "+91 8328430029",
   github: "https://github.com/Satyavv2",
   linkedin: "https://www.linkedin.com/in/satyanarayanavvm/",
+  portfolio: "https://satyamotipalli.github.io/portfolio/",
   careerStart: "April 2022",
   yearsExperience: `${YEARS_EXPERIENCE}+`,
 };
@@ -40,12 +41,39 @@ export const nav = [
   { label: "Contact", href: "#contact" },
 ];
 
+export const footer = {
+  builtWith: ["Next.js", "Framer Motion"],
+};
+
+// ── Chat assistant: bottom-right RAG widget that answers from this file ──────
+export const chat = {
+  title: "Ask Satya's résumé",
+  prompt: "~/$ ask satya",
+  mode: "RAG · résumé",
+  modeLive: "RAG · Gemini",
+  greeting:
+    "Hi! I'm Satya's portfolio assistant. Ask me about his projects, skills or experience — every answer is retrieved from his résumé.",
+  placeholder: "ask about projects, stack…",
+  thinking: "retrieving",
+  suggestions: [
+    "What AI work has he done?",
+    "Tell me about Pathsaathi",
+    "Angular experience?",
+    "How can I contact him?",
+  ],
+  found: "Here's what I found in Satya's résumé:",
+  noMatch:
+    "I couldn't find that in Satya's résumé. Try asking about his projects, stack or experience — or reach him through the contact form.",
+};
+
 export const about = {
   summary: [
     `Full-stack developer with ${YEARS_EXPERIENCE}+ years delivering production IT projects end to end — requirement analysis, design, development, testing, deployment, and production support across multiple verticals.`,
     "I build dynamic, scalable user interfaces with Angular (8–19), React, TypeScript and Next.js, and back them with RESTful services in Node.js and NestJS — using connection pooling and clean architecture for performance.",
     "Increasingly focused on AI integration: building intelligent, context-aware agents and AI-driven features with LangChain and the OpenAI API.",
   ],
+  // Single third-person paragraph used by the generated résumé (scripts/build-cv.mjs).
+  resumeSummary: `Full-stack developer with ${YEARS_EXPERIENCE}+ years delivering production IT projects end to end — requirement analysis, design, development, testing, deployment and production support across multiple verticals. Builds dynamic, scalable user interfaces with Angular (8–19), React, TypeScript and Next.js, backed by RESTful services in Node.js and NestJS using connection pooling and clean architecture. Increasingly focused on AI integration — context-aware agents and AI-driven features with LangChain and the OpenAI API.`,
   stats: [
     { value: `${YEARS_EXPERIENCE}+`, label: "Years experience" },
     { value: "7", label: "Projects delivered" },

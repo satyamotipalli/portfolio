@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "satya-portfolio-chat",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-01-01",
+  "observability": { "enabled": true },
+  "vars": {
+    "CHAT_MODEL": "gemini-flash-lite-latest",
+    "ALLOWED_ORIGINS": "https://satyamotipalli.github.io,http://localhost:3000,http://localhost:3001"
+  }
+  // GEMINI_API_KEY is a secret, never a var:
+  //   deployed → npx wrangler secret put GEMINI_API_KEY
+  //   local    → worker/.dev.vars (gitignored)
+}

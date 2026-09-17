@@ -37,6 +37,10 @@ jobs:
 
       - name: Build (static export)
         run: npm run build
+        env:
+          # Public URL of the chat Worker (repo Settings → Variables → CHAT_API_URL, e.g.
+          # https://satya-portfolio-chat.<account>.workers.dev/chat). Unset → in-browser retrieval only.
+          NEXT_PUBLIC_CHAT_API: ${{ vars.CHAT_API_URL }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
