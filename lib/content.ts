@@ -41,10 +41,6 @@ export const nav = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const footer = {
-  builtWith: ["Next.js", "Framer Motion"],
-};
-
 // ── Chat assistant: bottom-right RAG widget that answers from this file ──────
 export const chat = {
   title: "Ask Satya's résumé",
