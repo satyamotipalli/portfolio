@@ -188,7 +188,7 @@ export const projects: Project[] = [
     role: "Angular Developer",
     period: "Jun 2022 — Jan 2026",
     summary:
-      "Deloitte's Direct & Indirect Tax litigation tool — a role-based platform where stakeholders run reports and perform tax-management activities by permission.",
+      "Enterprise Direct & Indirect Tax litigation tool — a role-based platform where stakeholders run reports and perform tax-management activities by permission.",
     tech: ["Angular 12", "PrimeNG", ".NET (C#)", "PostgreSQL", "Power BI", "MSAL"],
     highlights: [
       "Integrated MSAL for secure authentication and login.",
@@ -244,6 +244,7 @@ export const projects: Project[] = [
       "$ llm.plan(diet, doctorRules)",
       "↳ 7-day plan generated ✓",
     ],
+    featured: true,
   },
   {
     name: "Gen AI",

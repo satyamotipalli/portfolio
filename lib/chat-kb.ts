@@ -102,7 +102,8 @@ const chunks: Chunk[] = [
       `project-${i}`,
       p.name,
       "#projects",
-      `${[p.client, p.role, p.period].filter(Boolean).join(" · ")}\n${p.summary}\nStack: ${p.tech.join(", ")}`,
+      // No dates or client names, matching the résumé and the project cards.
+      `${p.role ? `${p.role}\n` : ""}${p.summary}\nStack: ${p.tech.join(", ")}`,
       "project",
       p.highlights.map((h) => `• ${h}`).join("\n"),
     ),

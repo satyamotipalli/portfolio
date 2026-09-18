@@ -18,12 +18,15 @@ const bare = (url) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")
 const link = (url) => `<a href="${esc(url)}">${esc(bare(url))}</a>`;
 const bullets = (items) => `<ul>${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>`;
 
+// The résumé carries only the featured projects (set in lib/content.ts), with no dates and no
+// client names — those stay on the website.
 const projectBlocks = projects
+  .filter((p) => p.featured)
   .map(
     (p, i) => `
     <div class="project">
-      <p class="title">Project ${i + 1}: ${esc(p.name)}${p.client ? ` (Client: ${esc(p.client.replace(/\s*\((.+)\)$/, ", $1"))})` : ""}</p>
-      <p>${p.role ? `Role: ${esc(p.role)} | ` : ""}Duration: ${range(p.period)}</p>
+      <p class="title">Project ${i + 1}: ${esc(p.name)}</p>
+      ${p.role ? `<p>Role: ${esc(p.role)}</p>` : ""}
       <p>Tech Stack: ${esc(p.tech.join(", "))}</p>
       <p class="overview">${esc(p.summary)}</p>
       <p class="sub">Responsibilities &amp; Achievements</p>

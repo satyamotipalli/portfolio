@@ -43,28 +43,16 @@ function ProjectRow({ project }: { project: Project }) {
       <motion.article
         whileHover={{ y: -3 }}
         transition={{ type: "spring", stiffness: 280, damping: 22 }}
-        className={`card-base group p-6 transition-colors hover:border-accent/40 hover:shadow-[0_0_40px_-16px_var(--glow)] sm:p-8 ${
-          project.featured ? "ring-1 ring-accent/15" : ""
-        }`}
+        className="card-base group p-6 transition-colors hover:border-accent/40 hover:shadow-[0_0_40px_-16px_var(--glow)] sm:p-8"
       >
         <div className="grid items-center gap-7 md:grid-cols-2">
           {/* Text side */}
           <div>
-            <div className="flex items-center gap-3 font-mono text-xs text-muted">
-              {project.featured && (
-                <span className="rounded border border-accent/40 px-1.5 py-0.5 text-accent">featured</span>
-              )}
-              <span>{project.period}</span>
-            </div>
-
-            <h3 className="mt-3 text-xl font-semibold text-foreground transition-colors group-hover:text-accent">
+            {/* Dates and client names stay off the site, matching the résumé. */}
+            <h3 className="text-xl font-semibold text-foreground transition-colors group-hover:text-accent">
               {project.name}
             </h3>
-            {(project.client || project.role) && (
-              <p className="mt-1 font-mono text-xs text-accent-2">
-                {[project.client, project.role].filter(Boolean).join(" · ")}
-              </p>
-            )}
+            {project.role && <p className="mt-1 font-mono text-xs text-accent-2">{project.role}</p>}
 
             <p className="mt-3 text-sm leading-relaxed text-muted">{project.summary}</p>
 
@@ -116,9 +104,12 @@ export default function Projects() {
     <section id="projects" className="mx-auto max-w-7xl px-5 py-20 sm:py-28">
       <SectionHeading index="02" title="Projects" command="git log ./projects" />
       <div className="space-y-5">
-        {projects.map((p) => (
-          <ProjectRow key={p.name} project={p} />
-        ))}
+        {/* Only the featured projects — same three as the résumé. */}
+        {projects
+          .filter((p) => p.featured)
+          .map((p) => (
+            <ProjectRow key={p.name} project={p} />
+          ))}
       </div>
     </section>
   );
